@@ -1,153 +1,227 @@
-    body {
-        background-color: white;
-    }
-    
-    * {
-        font-family: 'Roboto', sans-serif;
-        font-size: 16px;
-    }
-    
-    h1 {
-        font-size: 2em;
-    }
-    
-    main {
-        display: grid;
-        grid-template-columns: 1fr 250px 250px 250px 1fr;
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        margin: 0;
-    }
-    
-    nav {
-        grid-area: 2/2/3/5;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: center;
-        div {
-            padding: 0 30px;
-            border: 1px solid black;
-            a {
-                font-family: 'Nunito', sans-serif;
-                text-decoration: none;
-                font-size: 1.4em;
-                color: black;
-            }
+// Exercici 3
+@import 'notNested';
+@import 'body';
+@font-face {
+    font-family: 'poller_oneregular';
+    src: url('../fonts/pollerone/pollerone-webfont.eot');
+    src: url('../fonts/pollerone/pollerone-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/pollerone/pollerone-webfont.woff') format('woff'), url('../fonts/pollerone/pollerone-webfont.ttf') format('truetype'), url('../fonts/pollerone/pollerone-webfont.svg#poller_oneregular') format('svg');
+}
+
+@font-face {
+    font-family: 'leckerli_oneregular';
+    src: url('../fonts/leckerlione/leckerlione-regular-webfont.eot');
+    src: url('../fonts/leckerlione/leckerlione-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/leckerlione/leckerlione-regular-webfont.woff') format('woff'), url('../fonts/leckerlione/leckerlione-regular-webfont.ttf') format('truetype'), url('../fonts/leckerlione/leckerlione-regular-webfont.svg#leckerli_oneregular') format('svg');
+}
+
+// Exercici 4 normal font
+@mixin normalFont() {
+    font-size: 25px;
+    font-weight: normal;
+}
+
+// Exercici 4 space declaration
+@mixin space($property) {
+    margin: $property;
+    padding: $property;
+}
+
+// Exercici 5 inheritable block 1
+%text-css {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+// Exercici 5 inheritable block 2
+%float-css {
+    float: left;
+}
+
+// Exercici 1
+$white: #fff;
+$black: #252525;
+// Exercici 2 
+p {
+    color: $black;
+    line-height: 6 * 4px;
+    @include space(0);
+    a {
+        color: #252525;
+        text-decoration: underline;
+        &:hover {
+            color: #898989;
         }
-        margin-bottom:20px;
     }
-    
-    header {
-        grid-area: 1/2/2/5;
-        display: flex;
-        justify-content: center;
-        >img {
-            height: 70px;
-        }
-    }
-    
-    div#beacontoall {
-        grid-area: 4/2/5/5;
+}
+
+#header {
+    margin: 0 auto;
+    padding: 44px 0 50px;
+    text-align: center;
+    // Exercici 6
+    width: (460 * 2) * 1px;
+    a.logo {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        width: 680 / 2 * 1px;
         img {
-            width: 100%;
-            border: 3px solid black;
-            box-sizing: border-box;
-        }
-    }
-    
-    div#cards {
-        grid-area: 5/2/6/5;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        article {
-            p {
-                text-align: justify;
-            }
-            flex-basis: 100px;
-            display: flex;
-            flex-flow: column nowrap;
-            align-items: center;
-            img {
-                width: 230px;
-                border: 3px solid #fff;
-            }
-            >a {
-                text-decoration: none;
-                padding: 5px 10px;
-                background-color: #6a6969;
-                color: white;
-            }
-        }
-    }
-    
-    div#beacon {
-        grid-area: 3/2/4/5;
-        width: 100%;
-        img {
-            width: 100%;
-            border: 3px solid black;
-            box-sizing: border-box;
-        }
-        div {
-            position: relative;
-        }
-    }
-    
-    div#title {
-        grid-area: 3/2/4/5;
-        z-index: 3;
-        margin-left: 300px;
-        margin-top: 125px;
-    }
-    
-    footer {
-        height: 100px;
-        grid-area: 6/1/7/6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #252525;
-        margin-top: 10px;
-        div {
-            color: white;
-            text-align: center;
-        }
-    }
-    
-    @media screen and (max-width: 700px) {
-        header img {
-            display: none;
-        }
-        main {
-            display: flex;
-            flex-direction: column;
-        }
-        nav {
-            flex-direction: column;
-            div {
-                padding: 0 10px;
-                margin-bottom: 5px;
-                text-align: center;
-            }
-        }
-        #beacon {
-            img {
-                display: none;
-            }
-        }
-        div#title {
+            border: 0;
             display: block;
             margin: 0;
-        }
-        div#cards {
-            flex-flow: column nowrap;
-            article {
-                flex-basis: 200px;
-                margin-bottom: 20px;
-                img {
-                    width: 100%;
-                }
-            }
+            padding: 0;
         }
     }
+    ul {
+        margin: 0;
+        padding: 56px 0 0;
+        li {
+            display: inline;
+            list-style: none;
+            margin: 0;
+            padding: 0 19px;
+            a {
+                color: #252525;
+                display: inline-block;
+                font-family: "Arial Black", Gadget, sans-serif;
+                font-size: 14px;
+                font-weight: normal;
+                margin: 0;
+                padding: 0 0 3px;
+                @extend %text-css;
+            }
+            a:hover {
+                color: #0ba39c;
+            }
+        }
+        .selected a {
+            color: #0ba39c;
+        }
+    }
+}
+
+#body {
+    margin: 0;
+    padding: 0 0 30px;
+    text-align: center;
+    h1 {
+        color: $white;
+        display: inline;
+        font-family: poller_oneregular;
+        font-size: 35px;
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        text-transform: uppercase;
+        span {
+            background: #252525;
+            display: inline-block;
+            padding: 15px 28px 12px;
+        }
+    }
+    >div {
+        margin: 0 auto;
+        padding: 0;
+        width: 960px;
+        img {
+            border: 2px solid #292929;
+            margin: 24px 0 0;
+            padding: 0;
+        }
+        .article h2 {
+            font-family: "Arial Black", Gadget, sans-serif;
+            @include normalFont();
+            margin: 0 0 30px;
+        }
+        .article p {
+            margin: 0 0 30px;
+        }
+        .article {
+            margin: 0 auto;
+            padding: 30px 30px 0;
+            width: 560px;
+        }
+        .article h3 {
+            color: #252525;
+            line-height: 24px;
+            margin: 0;
+            padding: 0;
+        }
+        .article h4 {
+            background: #252525;
+            color: #fff;
+            display: inline-block;
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 25px;
+            font-weight: normal;
+            margin: 0 0 30px;
+            padding: 8px 27px 10px;
+        }
+    }
+    div {
+        ul {
+            margin: 0;
+            padding: 24px 10px 0;
+            width: 940px;
+        }
+        ul li {
+            border: 2px solid #1a1a1a;
+            display: block;
+            list-style: none;
+            margin: 0 0 13px;
+            overflow: hidden;
+            padding: 0;
+        }
+        ul li .figure {
+            border-right: 2px solid #1a1a1a;
+            @extend %float-css;
+            margin: 0;
+            padding: 0;
+            width: 376px;
+            &:hover img {
+                opacity: 1;
+            }
+        }
+        ul li img {
+            border: 0;
+            display: block;
+            margin: 0;
+            padding: 0;
+            opacity: 0.8;
+            transition: 0.5s ease-in-out;
+        }
+        ul li div h3 {
+            color: #252525;
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 25px;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+        }
+        ul li div {
+            @extend %float-css;
+            margin: 0;
+            padding: 63px 0 20px;
+            width: 558px;
+        }
+        ul li div a.more {
+            background: #000;
+            color: #fff;
+            display: inline-block;
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 18px;
+            font-weight: normal;
+            margin: 0;
+            padding: 8px 28px;
+            @extend %text-css;
+        }
+        ul li div a.more:hover {
+            color: #252525;
+            background: #fff;
+            border: 2px solid #252525;
+        }
+        ul li div p {
+            padding: 30px 30px 18px;
+        }
+    }
+}
